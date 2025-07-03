@@ -1,0 +1,217 @@
+/**app.wxss**/
+
+/* ==========================================
+   设计系统 - CSS变量定义 (v2.0)
+   ========================================== */
+
+:root {
+  /* 主色调: 温暖橙红渐变 */
+  --primary-color: #FF6B6B;
+  --primary-gradient: linear-gradient(135deg, #FF6B6B 0%, #FF8787 100%);
+  --primary-light: #FFE3E3;
+  --primary-dark: #E85555;
+  
+  /* 辅助色彩 */
+  --secondary-color: #4ECDC4;  /* 清新蓝绿 */
+  --success-color: #51CF66;    /* 薄荷绿 */
+  --warning-color: #FFD43B;    /* 温暖黄 */
+  --danger-color: #FF6B6B;     /* 警告红 */
+  --info-color: #339AF0;       /* 信息蓝 */
+  
+  /* 中性色 */
+  --text-primary: #212529;     /* 主要文字 */
+  --text-secondary: #6C757D;   /* 次要文字 */
+  --text-disabled: #ADB5BD;    /* 禁用文字 */
+  --text-placeholder: #DEE2E6; /* 占位文字 */
+  
+  /* 背景色 */
+  --bg-primary: #FFFFFF;       /* 主背景 */
+  --bg-secondary: #F8F9FA;     /* 次背景 */
+  --bg-tertiary: #E9ECEF;      /* 第三背景 */
+  --bg-dark: #343A40;          /* 深色背景 */
+  
+  /* 边框色 */
+  --border-light: #E9ECEF;
+  --border-medium: #DEE2E6;
+  --border-dark: #ADB5BD;
+  
+  /* 间距系统 */
+  --spacing-xs: 8rpx;   /* 极小间距 */
+  --spacing-sm: 16rpx;  /* 小间距 */
+  --spacing-md: 24rpx;  /* 中等间距 */
+  --spacing-lg: 32rpx;  /* 大间距 */
+  --spacing-xl: 48rpx;  /* 超大间距 */
+  --spacing-2xl: 64rpx; /* 特大间距 */
+  
+  /* 字体系统 */
+  --font-size-xs: 24rpx;    /* 辅助文字 */
+  --font-size-sm: 28rpx;    /* 正文 */
+  --font-size-md: 32rpx;    /* 小标题 */
+  --font-size-lg: 36rpx;    /* 主标题 */
+  --font-size-xl: 40rpx;    /* 大标题 */
+  --font-size-2xl: 48rpx;   /* 超大标题 */
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.8;
+  
+  /* 圆角系统 */
+  --border-radius-sm: 8rpx;
+  --border-radius-md: 16rpx;
+  --border-radius-lg: 24rpx;
+  --border-radius-xl: 32rpx;
+  --border-radius-full: 9999rpx;
+  
+  /* 阴影系统 */
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16rpx 48rpx rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 24rpx 64rpx rgba(0, 0, 0, 0.16);
+  
+  /* 过渡动画 */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.25s ease-in-out;
+  --transition-slow: 0.35s ease-in-out;
+  
+  /* Z-index层级 */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ==========================================
+   全局样式重置和基础设置
+   ========================================== */
+
+page {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 
+               'Segoe UI', Arial, Roboto, 'PingFang SC', 'Hiragino Sans GB', 
+               'Microsoft Yahei', sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+
+/* ==========================================
+   按钮组件全局样式重置
+   ========================================== */
+
+button {
+  background: initial;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button::after {
+  border: none;
+}
+
+/* ==========================================
+   通用工具类
+   ========================================== */
+
+/* 文字样式 */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-md { font-size: var(--font-size-md); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-disabled { color: var(--text-disabled); }
+
+/* 间距工具类 */
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+/* 圆角工具类 */
+.rounded-sm { border-radius: var(--border-radius-sm); }
+.rounded-md { border-radius: var(--border-radius-md); }
+.rounded-lg { border-radius: var(--border-radius-lg); }
+.rounded-xl { border-radius: var(--border-radius-xl); }
+.rounded-full { border-radius: var(--border-radius-full); }
+
+/* 阴影工具类 */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+/* 过渡动画工具类 */
+.transition-fast { transition: all var(--transition-fast); }
+.transition-normal { transition: all var(--transition-normal); }
+.transition-slow { transition: all var(--transition-slow); }
+
+/* ==========================================
+   布局相关
+   ========================================== */
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-row { flex-direction: row; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.flex-1 { flex: 1; }
+
+/* 隐藏滚动条但保持可滚动 */
+.scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none;
+}

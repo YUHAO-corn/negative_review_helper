@@ -1,0 +1,281 @@
+<!--pages/index/index.wxml-->
+<view class="page-container">
+
+  <!-- 输入卡片 -->
+  <view class="card">
+    <view class="card-title">
+      <van-icon name="records" size="20px" />
+      输入差评内容
+    </view>
+    
+    <van-field
+      value="{{ reviewText }}"
+      type="textarea"
+      placeholder="送太慢，汤全都洒出来了！！！"
+      autosize
+      border="{{ false }}"
+      bind:change="onInput"
+      custom-class="review-field"
+    />
+
+    <view class="language-switcher">
+      <view 
+        class="language-option {{ language === 'mandarin' ? 'active' : '' }}"
+        bind:tap="switchLanguage"
+        data-lang="mandarin"
+      >普通话</view>
+      <view 
+        class="language-option {{ language === 'cantonese' ? 'active' : '' }}"
+        bind:tap="switchLanguage"
+        data-lang="cantonese"
+      >粤语</view>
+    </view>
+
+    <!-- 确保按钮显示 -->
+    <view class="card-footer">
+      <van-button 
+        type="primary" 
+        block 
+        round 
+        icon="search" 
+        loading="{{isLoading}}" 
+        disabled="{{isLoading}}"
+        bind:click="startAnalysis"
+        style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8787 100%) !important; border: none !important; margin-top: 24rpx;">
+        {{ isLoading ? '分析中...' : '开始分析' }}
+      </van-button>
+    </view>
+  </view>
+
+  <!-- 专业处理进度展示 - 加载状态 -->
+  <block wx:if="{{isLoading && !analysis}}">
+    <view class="card processing-card">
+      <view class="processing-header">
+        <van-icon name="setting-o" size="24px" class="processing-main-icon" />
+        <text class="processing-title">AI智能分析中</text>
+      </view>
+      
+      <view class="processing-subtitle">帮紧你 帮紧你 30秒就出来 🚀</view>
+      
+      <!-- 处理步骤 -->
+      <view class="processing-steps">
+        <!-- 步骤1: 差评解析 -->
+        <view class="step-item {{ currentStep >= 1 ? 'active' : '' }} {{ currentStep > 1 ? 'completed' : '' }}">
+          <view class="step-icon-wrapper">
+            <van-icon name="search" size="20px" class="step-icon" />
+            <view wx:if="{{ currentStep === 1 }}" class="step-loading"></view>
+            <view wx:if="{{ currentStep > 1 }}" class="step-check">✓</view>
+          </view>
+          <view class="step-content">
+            <text class="step-title">差评解析</text>
+            <text class="step-desc">智能识别问题类型和情绪</text>
+          </view>
+        </view>
+
+        <!-- 步骤2: 情绪分析 -->
+        <view class="step-item {{ currentStep >= 2 ? 'active' : '' }} {{ currentStep > 2 ? 'completed' : '' }}">
+          <view class="step-icon-wrapper">
+            <van-icon name="smile-o" size="20px" class="step-icon" />
+            <view wx:if="{{ currentStep === 2 }}" class="step-loading"></view>
+            <view wx:if="{{ currentStep > 2 }}" class="step-check">✓</view>
+          </view>
+          <view class="step-content">
+            <text class="step-title">情绪分析</text>
+            <text class="step-desc">评估用户愤怒程度和关键痛点</text>
+          </view>
+        </view>
+
+        <!-- 步骤3: 策略匹配 -->
+        <view class="step-item {{ currentStep >= 3 ? 'active' : '' }} {{ currentStep > 3 ? 'completed' : '' }}">
+          <view class="step-icon-wrapper">
+            <van-icon name="bulb-o" size="20px" class="step-icon" />
+            <view wx:if="{{ currentStep === 3 }}" class="step-loading"></view>
+            <view wx:if="{{ currentStep > 3 }}" class="step-check">✓</view>
+          </view>
+          <view class="step-content">
+            <text class="step-title">策略匹配</text>
+            <text class="step-desc">匹配最佳回复策略和角度</text>
+          </view>
+        </view>
+
+        <!-- 步骤4: 内容生成 -->
+        <view class="step-item {{ currentStep >= 4 ? 'active' : '' }} {{ currentStep > 4 ? 'completed' : '' }}">
+          <view class="step-icon-wrapper">
+            <van-icon name="edit" size="20px" class="step-icon" />
+            <view wx:if="{{ currentStep === 4 }}" class="step-loading"></view>
+            <view wx:if="{{ currentStep > 4 }}" class="step-check">✓</view>
+          </view>
+          <view class="step-content">
+            <text class="step-title">内容生成</text>
+            <text class="step-desc">生成9种风格的专业回复</text>
+          </view>
+        </view>
+
+        <!-- 步骤5: 质量检测 -->
+        <view class="step-item {{ currentStep >= 5 ? 'active' : '' }} {{ currentStep > 5 ? 'completed' : '' }}">
+          <view class="step-icon-wrapper">
+            <van-icon name="shield-o" size="20px" class="step-icon" />
+            <view wx:if="{{ currentStep === 5 }}" class="step-loading"></view>
+            <view wx:if="{{ currentStep > 5 }}" class="step-check">✓</view>
+          </view>
+          <view class="step-content">
+            <text class="step-title">质量检测</text>
+            <text class="step-desc">确保回复安全无风险</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 进度条 -->
+      <view class="progress-container">
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{ (currentStep / 5) * 100 }}%"></view>
+        </view>
+        <text class="progress-text">{{ Math.round((currentStep / 5) * 100) }}% 完成</text>
+      </view>
+
+      <!-- 底部鼓励文案 -->
+      <view class="processing-footer">
+        <text class="footer-text">💡 {{ encourageTexts[currentStep - 1] }}</text>
+      </view>
+    </view>
+  </block>
+
+  <!-- 分析结果 -->
+  <block wx:if="{{analysis}}">
+    <view class="card">
+      <view class="card-title">
+        <van-icon name="chart-trending-o" size="20px" />
+        分析结果
+      </view>
+      
+      <view class="analysis-row">
+        <text class="analysis-label">问题类型:</text>
+        <van-tag type="danger">{{analysis.issueType}}</van-tag>
+      </view>
+
+      <view class="analysis-row">
+        <text class="analysis-label">用户怒气值:</text>
+        <view class="anger-bar">
+          <view 
+            class="anger-bar-fill" 
+            style="width: {{analysis.anger}}%; background-color: {{analysis.anger > 60 ? '#ee0a24' : '#ff976a'}};">
+          </view>
+        </view>
+        <text class="anger-value">{{analysis.anger}}%</text>
+      </view>
+
+      <view class="analysis-row">
+        <text class="analysis-label">关键矛盾:</text>
+        <text class="analysis-keywords">{{analysis.keywords}}</text>
+      </view>
+    </view>
+  </block>
+
+  <!-- 回复策略 -->
+  <block wx:if="{{results}}">
+    <view class="card">
+      <view class="card-title">
+        <van-icon name="good-job-o" size="20px" />
+        选择回复策略
+      </view>
+      
+      <view class="strategy-group">
+        <view 
+          wx:for="{{angles}}" 
+          wx:key="item.key" 
+          class="strategy-option {{selectedAngle === item.key ? 'active' : ''}}"
+          bind:tap="selectAngle"
+          data-angle="{{item.key}}"
+        >
+          <view class="strategy-name">{{item.name}}</view>
+          <view class="strategy-desc">{{item.description}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 回复风格 -->
+    <view class="card">
+      <view class="card-title">
+        <van-icon name="flower-o" size="20px" />
+        选择回复风格
+      </view>
+      
+      <view class="style-group">
+        <view 
+          wx:for="{{styles}}" 
+          wx:key="item.id" 
+          class="style-item {{selectedStyleId === item.id ? 'active' : ''}}"
+          bind:tap="selectStyle"
+          data-style-id="{{item.id}}"
+        >
+          <van-icon name="{{item.icon}}" size="32px" class="style-icon" />
+          <text class="style-name">{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 生成的回复 -->
+    <view class="card result-card">
+       <view class="card-title">
+        <van-icon name="chat-o" size="20px" />
+        生成的回复
+      </view>
+
+      <view class="reply-content">{{finalReply}}</view>
+
+      <!-- 补偿更新提示 -->
+      <view wx:if="{{compensationUpdated}}" class="compensation-updated-tip">
+        <van-icon name="success" size="16px" />
+        <text>✨ 补偿信息已成功添加到回复中</text>
+      </view>
+
+      <!-- 内联补偿选择区域 -->
+      <view class="compensation-section">
+        <view class="compensation-title">
+          <van-icon name="bulb-o" size="16px" />
+          需要提供补偿措施吗？
+        </view>
+        
+        <view class="compensation-options">
+          <view 
+            wx:for="{{compensationActions}}" 
+            wx:key="name"
+            class="compensation-option {{compensationProcessing ? 'disabled' : ''}}"
+            bind:tap="selectCompensation"
+            data-compensation="{{item.name}}"
+          >
+            <van-icon name="gift-o" size="14px" />
+            <text>{{item.name}}</text>
+          </view>
+          <view 
+            class="compensation-option compensation-option--none {{compensationProcessing ? 'disabled' : ''}}"
+            bind:tap="skipCompensation"
+          >
+            <van-icon name="close" size="14px" />
+            <text>无需补偿</text>
+          </view>
+        </view>
+
+        <!-- 补偿处理状态 -->
+        <view wx:if="{{compensationProcessing}}" class="compensation-loading">
+          <van-icon name="loading" size="14px" />
+          <text>正在添加补偿信息...</text>
+        </view>
+      </view>
+
+      <view class="card-footer-grid">
+        <van-button 
+          type="primary" 
+          block 
+          icon="records" 
+          bind:click="copyReply"
+          custom-class="footer-btn"
+        >
+          复制回复
+        </van-button>
+      </view>
+    </view>
+
+  </block>
+
+</view>

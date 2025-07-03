@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "差评救命｜商家必备｜支持粤语",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-tag": "@vant/weapp/tag/index"
+  }
+}
