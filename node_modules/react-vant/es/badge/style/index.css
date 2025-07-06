@@ -1,0 +1,45 @@
+:root {
+  --rv-badge-size: 16px;
+  --rv-badge-color: var(--rv-white);
+  --rv-badge-padding: 0 3px;
+  --rv-badge-font-size: var(--rv-font-size-sm);
+  --rv-badge-font-weight: var(--rv-font-weight-bold);
+  --rv-badge-border-width: var(--rv-border-width-base);
+  --rv-badge-background-color: var(--rv-danger-color);
+  --rv-badge-dot-color: var(--rv-danger-color);
+  --rv-badge-dot-size: 8px;
+  --rv-badge-font-family: -apple-system-font, Helvetica Neue, Arial, sans-serif;
+}
+.rv-badge {
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: var(--rv-badge-size);
+  padding: var(--rv-badge-padding);
+  color: var(--rv-badge-color);
+  font-weight: var(--rv-badge-font-weight);
+  font-size: var(--rv-badge-font-size);
+  font-family: var(--rv-badge-font-family);
+  line-height: 1.2;
+  text-align: center;
+  background-color: var(--rv-badge-background-color);
+  border: var(--rv-badge-border-width) solid var(--rv-white);
+  border-radius: var(--rv-border-radius-max);
+}
+.rv-badge--fixed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  transform-origin: 100%;
+}
+.rv-badge--dot {
+  width: var(--rv-badge-dot-size);
+  min-width: 0;
+  height: var(--rv-badge-dot-size);
+  background-color: var(--rv-badge-dot-color);
+  border-radius: 100%;
+}
+.rv-badge__wrapper {
+  position: relative;
+  display: inline-block;
+}

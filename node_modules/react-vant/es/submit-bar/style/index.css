@@ -1,0 +1,84 @@
+:root {
+  --rv-submit-bar-height: 50px;
+  --rv-submit-bar-z-index: 100;
+  --rv-submit-bar-background-color: var(--rv-white);
+  --rv-submit-bar-button-width: 110px;
+  --rv-submit-bar-price-color: var(--rv-danger-color);
+  --rv-submit-bar-price-font-size: var(--rv-font-size-sm);
+  --rv-submit-bar-price-integer-font-size: 20px;
+  --rv-submit-bar-price-font-family: var(--rv-price-integer-font-family);
+  --rv-submit-bar-currency-font-size: var(--rv-font-size-md);
+  --rv-submit-bar-text-color: var(--rv-text-color);
+  --rv-submit-bar-text-font-size: var(--rv-font-size-md);
+  --rv-submit-bar-tip-padding: var(--rv-padding-xs) var(--rv-padding-sm);
+  --rv-submit-bar-tip-font-size: var(--rv-font-size-sm);
+  --rv-submit-bar-tip-line-height: 1.5;
+  --rv-submit-bar-tip-color: #f56723;
+  --rv-submit-bar-tip-background-color: #fff7cc;
+  --rv-submit-bar-tip-icon-size: 12px;
+  --rv-submit-bar-button-height: 40px;
+  --rv-submit-bar-padding: 0 var(--rv-padding-md);
+}
+.rv-submit-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--rv-submit-bar-z-index);
+  width: 100%;
+  background-color: var(--rv-submit-bar-background-color);
+  user-select: none;
+}
+.rv-submit-bar__tip {
+  padding: var(--rv-submit-bar-tip-padding);
+  color: var(--rv-submit-bar-tip-color);
+  font-size: var(--rv-submit-bar-tip-font-size);
+  line-height: var(--rv-submit-bar-tip-line-height);
+  background-color: var(--rv-submit-bar-tip-background-color);
+}
+.rv-submit-bar__tip-icon {
+  margin-right: var(--rv-padding-base);
+  font-size: var(--rv-submit-bar-tip-icon-size);
+  vertical-align: middle;
+}
+.rv-submit-bar__tip-text {
+  vertical-align: middle;
+}
+.rv-submit-bar__bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: var(--rv-submit-bar-height);
+  padding: var(--rv-submit-bar-padding);
+  font-size: var(--rv-submit-bar-text-font-size);
+}
+.rv-submit-bar__text {
+  flex: 1;
+  padding-right: var(--rv-padding-sm);
+  color: var(--rv-submit-bar-text-color);
+  text-align: right;
+}
+.rv-submit-bar__text span {
+  display: inline-block;
+}
+.rv-submit-bar__suffix-label {
+  margin-left: var(--rv-padding-base);
+  font-weight: var(--rv-font-weight-bold);
+}
+.rv-submit-bar__price {
+  color: var(--rv-submit-bar-price-color);
+  font-weight: var(--rv-font-weight-bold);
+  font-size: var(--rv-submit-bar-price-font-size);
+}
+.rv-submit-bar__price-integer {
+  font-size: var(--rv-submit-bar-price-integer-font-size);
+  font-family: var(--rv-submit-bar-price-font-family);
+}
+.rv-submit-bar__button.rv-button {
+  width: var(--rv-submit-bar-button-width);
+  height: var(--rv-submit-bar-button-height);
+  font-weight: var(--rv-font-weight-bold);
+  border: none;
+}
+.rv-submit-bar__button.rv-submit-bar__button--danger {
+  background: var(--rv-gradient-red);
+}

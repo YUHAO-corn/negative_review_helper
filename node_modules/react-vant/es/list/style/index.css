@@ -1,0 +1,18 @@
+:root {
+  --rv-list-text-color: var(--rv-gray-6);
+  --rv-list-text-font-size: var(--rv-font-size-md);
+  --rv-list-text-line-height: 50px;
+  --rv-list-loading-icon-size: 16px;
+}
+.rv-list__loading,
+.rv-list__finished,
+.rv-list__error {
+  color: var(--rv-list-text-color);
+  font-size: var(--rv-list-text-font-size);
+  line-height: var(--rv-list-text-line-height);
+  text-align: center;
+}
+.rv-list__loading .rv-loading__spinner {
+  width: var(--rv-list-loading-icon-size);
+  height: var(--rv-list-loading-icon-size);
+}

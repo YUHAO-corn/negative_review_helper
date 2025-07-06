@@ -1,0 +1,132 @@
+:root {
+  --rv-field-input-error-text-color: var(--rv-danger-color);
+  --rv-field-label-width: 6.2em;
+  --rv-field-label-color: var(--rv-gray-7);
+  --rv-field-label-margin-right: var(--rv-padding-sm);
+  --rv-field-icon-size: 16px;
+  --rv-field-right-icon-color: var(--rv-gray-6);
+  --rv-field-error-message-color: var(--rv-danger-color);
+  --rv-field-error-message-font-size: 12px;
+  --rv-field-disabled-text-color: var(--rv-gray-5);
+  --rv-field-required-mark-color: var(--rv-red);
+  --rv-field-intro-color: var(--rv-gray-6);
+  --rv-field-tooltip-icon-color: var(--rv-gray-5);
+}
+.rv-field .rv-field__label {
+  flex: none;
+  box-sizing: border-box;
+  width: var(--rv-field-label-width);
+  margin-right: var(--rv-field-label-margin-right);
+  color: var(--rv-field-label-color);
+  text-align: left;
+  word-wrap: break-word;
+}
+.rv-field .rv-field__label--center {
+  text-align: center;
+}
+.rv-field .rv-field__label--right {
+  text-align: right;
+}
+.rv-field .rv-field__label--required::before {
+  margin-right: 2px;
+  color: var(--rv-field-required-mark-color);
+  content: '*';
+}
+.rv-field--error .rv-input__control,
+.rv-field--error .rv-input__control::placeholder,
+.rv-field--error .rv-textarea__control,
+.rv-field--error .rv-textarea__control::placeholder {
+  color: var(--rv-field-input-error-text-color);
+  -webkit-text-fill-color: currentColor;
+}
+.rv-field--disabled .rv-field__label {
+  color: var(--rv-field-disabled-text-color);
+}
+.rv-field__value {
+  overflow: visible;
+}
+.rv-field__value--center .rv-field__children,
+.rv-field__value--center .rv-field__intro,
+.rv-field__value--center .rv-field__error-message {
+  justify-content: center;
+  text-align: center;
+}
+.rv-field__value--center .rv-input,
+.rv-field__value--center .rv-textarea {
+  text-align: center;
+}
+.rv-field__value--right .rv-field__children,
+.rv-field__value--right .rv-field__intro,
+.rv-field__value--right .rv-field__error-message {
+  justify-content: flex-end;
+  text-align: right;
+}
+.rv-field__value--right .rv-input,
+.rv-field__value--right .rv-textarea {
+  text-align: right;
+}
+.rv-field__body {
+  display: flex;
+  align-items: center;
+}
+.rv-field__children {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  min-height: var(--rv-cell-line-height);
+}
+.rv-field__control-wrapper {
+  width: 100%;
+  flex: 1;
+}
+.rv-field__icon,
+.rv-field__suffix,
+.rv-field__right-icon {
+  flex-shrink: 0;
+}
+.rv-field__right-icon {
+  margin-right: calc(var(--rv-padding-xs) * -1);
+  padding: 0 var(--rv-padding-xs);
+  box-sizing: content-box;
+}
+.rv-field__left-icon .rv-icon,
+.rv-field__right-icon .rv-icon {
+  display: block;
+  font-size: var(--rv-field-icon-size);
+  line-height: inherit;
+}
+.rv-field__left-icon {
+  margin-right: var(--rv-padding-base);
+}
+.rv-field__right-icon {
+  color: var(--rv-field-right-icon-color);
+}
+.rv-field__prefix {
+  padding-right: var(--rv-padding-xs);
+}
+.rv-field__suffix {
+  padding-left: var(--rv-padding-xs);
+}
+.rv-field__error-message {
+  color: var(--rv-field-error-message-color);
+  font-size: var(--rv-field-error-message-font-size);
+  line-height: 1.4em;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+}
+.rv-field__tooltip {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--rv-field-intro-color);
+  font-weight: bold;
+  vertical-align: middle;
+}
+.rv-field__intro {
+  color: var(--rv-field-intro-color);
+  font-size: var(--rv-field-error-message-font-size);
+  line-height: 1.4em;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+}

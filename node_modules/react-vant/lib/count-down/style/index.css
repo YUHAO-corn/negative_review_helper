@@ -1,0 +1,10 @@
+:root {
+  --rv-count-down-text-color: var(--rv-text-color);
+  --rv-count-down-font-size: var(--rv-font-size-md);
+  --rv-count-down-line-height: var(--rv-line-height-md);
+}
+.rv-count-down {
+  color: var(--rv-count-down-text-color);
+  font-size: var(--rv-count-down-font-size);
+  line-height: var(--rv-count-down-line-height);
+}

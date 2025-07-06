@@ -1,0 +1,70 @@
+:root {
+  --rv-image-placeholder-text-color: var(--rv-gray-6);
+  --rv-image-placeholder-font-size: var(--rv-font-size-md);
+  --rv-image-placeholder-background-color: var(--rv-background-color);
+  --rv-image-loading-icon-size: 32px;
+  --rv-image-loading-icon-color: var(--rv-gray-4);
+  --rv-image-error-icon-size: 32px;
+  --rv-image-error-icon-color: var(--rv-gray-4);
+}
+.rv-image {
+  position: relative;
+  display: inline-block;
+}
+.rv-image--block {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.rv-image--fix {
+  overflow: hidden;
+}
+.rv-image--fix .rv-image__img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.rv-image--fix-width .rv-image__img {
+  width: 100%;
+  height: auto;
+}
+.rv-image--fix-height .rv-image__img {
+  width: auto;
+  height: 100%;
+}
+.rv-image--round {
+  overflow: hidden;
+  border-radius: var(--rv-border-radius-max);
+}
+.rv-image--round .rv-image__img {
+  border-radius: inherit;
+}
+.rv-image__img,
+.rv-image__error,
+.rv-image__loading {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.rv-image__error,
+.rv-image__loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--rv-image-placeholder-text-color);
+  font-size: var(--rv-image-placeholder-font-size);
+  background-color: var(--rv-image-placeholder-background-color);
+}
+.rv-image__loading-icon {
+  color: var(--rv-image-loading-icon-color);
+  font-size: var(--rv-image-loading-icon-size);
+}
+.rv-image__error-icon {
+  color: var(--rv-image-error-icon-color);
+  font-size: var(--rv-image-error-icon-size);
+}

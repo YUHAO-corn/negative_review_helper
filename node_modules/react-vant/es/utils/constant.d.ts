@@ -1,0 +1,16 @@
+export declare const RED = "#ff603f";
+export declare const BLUE = "#2879ff";
+export declare const GREEN = "#00c853";
+export declare const WHITE = "#fff";
+export declare const GRAY = "#c9c9c9";
+export declare const GRAY_DARK = "#969799";
+export declare const BORDER = "rv-hairline";
+export declare const BORDER_TOP: string;
+export declare const BORDER_LEFT: string;
+export declare const BORDER_RIGHT: string;
+export declare const BORDER_BOTTOM: string;
+export declare const BORDER_SURROUND: string;
+export declare const BORDER_TOP_BOTTOM: string;
+export declare const BORDER_UNSET_TOP_BOTTOM: string;
+export declare const SHADOW = "rv-shadow";
+export declare const COMPONENT_TYPE_KEY = "__REACT_VANT_COMPONENT";

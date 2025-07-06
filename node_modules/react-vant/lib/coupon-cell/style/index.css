@@ -1,0 +1,6 @@
+:root {
+  --rv-coupon-cell-selected-text-color: var(--rv-text-color);
+}
+.rv-coupon-cell__value--selected {
+  color: var(--rv-coupon-cell-selected-text-color);
+}

@@ -1,0 +1,56 @@
+:root {
+  --rv-space-gap: 8px;
+}
+.rv-space {
+  --gap: var(--rv-space-gap);
+  display: inline-flex;
+  gap: var(--gap);
+}
+.rv-space__item {
+  flex: none;
+}
+.rv-space--vertical {
+  flex-direction: column;
+}
+.rv-space--horizontal {
+  flex-direction: row;
+}
+.rv-space--wrap {
+  flex-wrap: wrap;
+}
+.rv-space.rv-space--block {
+  display: flex;
+}
+.rv-space--align-center {
+  align-items: center;
+}
+.rv-space--align-start {
+  align-items: flex-start;
+}
+.rv-space--align-end {
+  align-items: flex-end;
+}
+.rv-space--align-baseline {
+  align-items: baseline;
+}
+.rv-space--justify-center {
+  justify-content: center;
+}
+.rv-space--justify-start {
+  justify-content: flex-start;
+}
+.rv-space--justify-end {
+  justify-content: flex-end;
+}
+.rv-space--justify-between {
+  justify-content: space-between;
+}
+.rv-space--justify-around {
+  justify-content: space-around;
+}
+.rv-space--justify-evenly {
+  justify-content: space-evenly;
+}
+.rv-space--justify-stretch {
+  justify-content: stretch;
+}

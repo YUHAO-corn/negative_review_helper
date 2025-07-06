@@ -1,0 +1,4 @@
+:root {
+  --rv-floating-ball-size: calc(48 * 1px);
+  --rv-floating-ball-z-index: 8;
+}

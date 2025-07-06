@@ -1,0 +1,7 @@
+:root {
+  --rv-sticky-z-index: 99;
+}
+.rv-sticky--fixed {
+  position: fixed;
+  z-index: var(--rv-sticky-z-index);
+}

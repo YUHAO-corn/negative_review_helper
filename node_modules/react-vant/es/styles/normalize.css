@@ -1,0 +1,29 @@
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+input,
+button,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+a:focus,
+input:focus,
+button:focus,
+textarea:focus,
+[class*='rv-']:focus {
+  outline: none;
+}
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

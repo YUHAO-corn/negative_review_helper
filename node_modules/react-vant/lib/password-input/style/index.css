@@ -1,0 +1,112 @@
+:root {
+  --rv-password-input-height: 50px;
+  --rv-password-input-margin: 0 var(--rv-padding-md);
+  --rv-password-input-font-size: 20px;
+  --rv-password-input-border-radius: 6px;
+  --rv-password-input-background-color: var(--rv-white);
+  --rv-password-input-info-color: var(--rv-gray-6);
+  --rv-password-input-info-font-size: var(--rv-font-size-md);
+  --rv-password-input-error-info-color: var(--rv-danger-color);
+  --rv-password-input-dot-size: 10px;
+  --rv-password-input-dot-color: var(--rv-black);
+  --rv-password-input-text-color: var(--rv-text-color);
+  --rv-password-input-cursor-color: var(--rv-text-color);
+  --rv-password-input-cursor-width: 1px;
+  --rv-password-input-cursor-height: 40%;
+  --rv-password-input-cursor-animation-duration: 1s;
+  --rv-password-input-item-border-radius: 0px;
+}
+.rv-password-input {
+  position: relative;
+  margin: var(--rv-password-input-margin);
+  user-select: none;
+}
+.rv-password-input input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  text-indent: -999rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  appearance: none;
+  caret-color: transparent;
+}
+.rv-password-input input[type='number']::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+.rv-password-input__info,
+.rv-password-input__error-info {
+  margin-top: var(--rv-padding-md);
+  font-size: var(--rv-password-input-info-font-size);
+  text-align: center;
+}
+.rv-password-input__info {
+  color: var(--rv-password-input-info-color);
+}
+.rv-password-input__error-info {
+  color: var(--rv-password-input-error-info-color);
+}
+.rv-password-input__security {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: var(--rv-password-input-height);
+  cursor: pointer;
+}
+.rv-password-input__security::after {
+  border-radius: var(--rv-password-input-border-radius);
+}
+.rv-password-input__security li {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--rv-password-input-text-color);
+  font-size: var(--rv-password-input-font-size);
+  line-height: 1.2;
+  background-color: var(--rv-password-input-background-color);
+  border-radius: var(--rv-password-input-item-border-radius);
+}
+.rv-password-input__security i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--rv-password-input-dot-size);
+  height: var(--rv-password-input-dot-size);
+  background-color: var(--rv-password-input-dot-color);
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+.rv-password-input__cursor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--rv-password-input-cursor-width);
+  height: var(--rv-password-input-cursor-height);
+  background-color: var(--rv-password-input-cursor-color);
+  transform: translate(-50%, -50%);
+  animation: var(--rv-password-input-cursor-animation-duration) rv-cursor-flicker infinite;
+}
+@keyframes rv-cursor-flicker {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

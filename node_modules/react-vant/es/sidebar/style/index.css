@@ -1,0 +1,77 @@
+:root {
+  --rv-sidebar-width: 80px;
+  --rv-sidebar-font-size: var(--rv-font-size-md);
+  --rv-sidebar-line-height: var(--rv-line-height-md);
+  --rv-sidebar-text-color: var(--rv-text-color);
+  --rv-sidebar-disabled-text-color: var(--rv-gray-5);
+  --rv-sidebar-padding: 20px var(--rv-padding-sm);
+  --rv-sidebar-active-color: var(--rv-active-color);
+  --rv-sidebar-background-color: var(--rv-background-color);
+  --rv-sidebar-selected-font-weight: var(--rv-font-weight-bold);
+  --rv-sidebar-selected-text-color: var(--rv-text-color);
+  --rv-sidebar-selected-border-width: 4px;
+  --rv-sidebar-selected-border-height: 16px;
+  --rv-sidebar-selected-border-color: var(--rv-danger-color);
+  --rv-sidebar-selected-background-color: var(--rv-white);
+}
+.rv-sidebar {
+  width: var(--rv-sidebar-width);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.rv-sidebar__wrapper {
+  display: flex;
+}
+.rv-sidebar__content {
+  flex: 1;
+}
+.rv-sidebar-item {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: var(--rv-sidebar-padding);
+  overflow: hidden;
+  color: var(--rv-sidebar-text-color);
+  font-size: var(--rv-sidebar-font-size);
+  line-height: var(--rv-sidebar-line-height);
+  background-color: var(--rv-sidebar-background-color);
+  cursor: pointer;
+  user-select: none;
+}
+.rv-sidebar-item:active {
+  background-color: var(--rv-sidebar-active-color);
+}
+.rv-sidebar-item:not(:last-child)::after {
+  border-bottom-width: 1px;
+}
+.rv-sidebar-item__text {
+  word-break: break-all;
+}
+.rv-sidebar-item--select {
+  color: var(--rv-sidebar-selected-text-color);
+  font-weight: var(--rv-sidebar-selected-font-weight);
+}
+.rv-sidebar-item--select,
+.rv-sidebar-item--select:active {
+  background-color: var(--rv-sidebar-selected-background-color);
+}
+.rv-sidebar-item--select::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: var(--rv-sidebar-selected-border-width);
+  height: var(--rv-sidebar-selected-border-height);
+  background-color: var(--rv-sidebar-selected-border-color);
+  transform: translateY(-50%);
+  content: '';
+}
+.rv-sidebar-item--disabled {
+  color: var(--rv-sidebar-disabled-text-color);
+  cursor: not-allowed;
+}
+.rv-sidebar-item--disabled:active {
+  background-color: var(--rv-sidebar-background-color);
+}
+.rv-sidebar-item__content {
+  background-color: lightblue;
+}

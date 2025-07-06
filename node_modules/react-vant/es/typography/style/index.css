@@ -1,0 +1,132 @@
+:root {
+  --rv-typography-color: var(--rv-text-color);
+  --rv-typography-link-color: var(--rv-primary-color);
+  --rv-typography-font-size-xs: 10px;
+  --rv-typography-font-size-sm: 12px;
+  --rv-typography-font-size: var(--rv-font-size-md);
+  --rv-typography-font-size-lg: 16px;
+  --rv-typography-font-size-xl: 20px;
+  --rv-typography-font-size-xxl: 24px;
+  --rv-typography-title-size-l1: 30px;
+  --rv-typography-title-size-l2: 26px;
+  --rv-typography-title-size-l3: 22px;
+  --rv-typography-title-size-l4: 20px;
+  --rv-typography-title-size-l5: 16px;
+  --rv-typography-title-size-l6: 14px;
+  --rv-typography-primary-color: var(--rv-primary-color);
+  --rv-typography-danger-color: var(--rv-danger-color);
+  --rv-typography-success-color: var(--rv-success-color);
+  --rv-typography-secondary-color: var(--rv-gray-6);
+  --rv-typography-warning-color: var(--rv-warning-color);
+  --rv-typography-disabled-color: var(--rv-gray-5);
+  --rv-typography-light-color: var(--rv-white);
+}
+.rv-typography {
+  color: var(--rv-typography-color);
+  word-wrap: break-word;
+}
+.rv-typography__ellipsis {
+  overflow: hidden;
+  line-height: 1.5;
+}
+.rv-typography__ellipsis--multi {
+  --line-clamp: 2;
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: var(--line-clamp);
+  line-clamp: var(--line-clamp);
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+}
+.rv-typography__link {
+  --rv-typography-color: var(--rv-typography-link-color);
+  cursor: pointer;
+  display: inline-block;
+}
+.rv-typography--xs {
+  font-size: var(--rv-typography-font-size-xs);
+}
+.rv-typography--sm {
+  font-size: var(--rv-typography-font-size-sm);
+}
+.rv-typography--md {
+  font-size: var(--rv-typography-font-size);
+}
+.rv-typography--lg {
+  font-size: var(--rv-typography-font-size-lg);
+}
+.rv-typography--xl {
+  font-size: var(--rv-typography-font-size-xl);
+}
+.rv-typography--xxl {
+  font-size: var(--rv-typography-font-size-xxl);
+}
+.rv-typography--primary {
+  --rv-typography-color: var(--rv-typography-primary-color);
+}
+.rv-typography--danger {
+  --rv-typography-color: var(--rv-typography-danger-color);
+}
+.rv-typography--success {
+  --rv-typography-color: var(--rv-typography-success-color);
+}
+.rv-typography--secondary {
+  --rv-typography-color: var(--rv-typography-secondary-color);
+}
+.rv-typography--light {
+  --rv-typography-color: var(--rv-typography-light-color);
+}
+.rv-typography--warning {
+  --rv-typography-color: var(--rv-typography-warning-color);
+}
+.rv-typography--disabled {
+  --rv-typography-color: var(--rv-typography-disabled-color);
+  cursor: not-allowed;
+}
+.rv-typography--underline {
+  text-decoration: underline;
+}
+.rv-typography--delete {
+  text-decoration: line-through;
+}
+.rv-typography__text {
+  display: inline-block;
+}
+.rv-typography__text.rv-ellipsis {
+  display: block;
+}
+.rv-typography__title {
+  font-weight: bold;
+  margin-bottom: 0.65em;
+}
+.rv-typography--l1 {
+  font-size: var(--rv-typography-title-size-l1);
+  line-height: 1.25;
+}
+.rv-typography--l2 {
+  font-size: var(--rv-typography-title-size-l2);
+  line-height: 1.35;
+}
+.rv-typography--l3 {
+  font-size: var(--rv-typography-title-size-l3);
+  line-height: 1.35;
+}
+.rv-typography--l4 {
+  font-size: var(--rv-typography-title-size-l4);
+  line-height: 1.4;
+}
+.rv-typography--l5 {
+  font-size: var(--rv-typography-title-size-l5);
+  line-height: 1.5;
+}
+.rv-typography--l6 {
+  font-size: var(--rv-typography-title-size-l6);
+  line-height: 1.5;
+}
+.rv-typography--center {
+  text-align: center;
+}
+.rv-typography--strong {
+  font-weight: bold;
+}

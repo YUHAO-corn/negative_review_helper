@@ -1,0 +1,90 @@
+:root {
+  --rv-radio-size: 20px;
+  --rv-radio-border-color: var(--rv-gray-5);
+  --rv-radio-transition-duration: var(--rv-animation-duration-fast);
+  --rv-radio-label-margin: var(--rv-padding-xs);
+  --rv-radio-label-color: var(--rv-text-color);
+  --rv-radio-checked-icon-color: var(--rv-primary-color);
+  --rv-radio-disabled-icon-color: var(--rv-gray-5);
+  --rv-radio-disabled-label-color: var(--rv-gray-5);
+  --rv-radio-disabled-background-color: var(--rv-border-color);
+}
+.rv-radio {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+.rv-radio--disabled {
+  cursor: not-allowed;
+}
+.rv-radio--label-disabled {
+  cursor: default;
+}
+.rv-radio--horizontal {
+  margin-right: var(--rv-padding-sm);
+}
+.rv-radio__icon {
+  flex: none;
+  height: 1em;
+  font-size: var(--rv-radio-size);
+  line-height: 1em;
+  cursor: pointer;
+}
+.rv-radio__icon .rv-icon {
+  display: block;
+  box-sizing: border-box;
+  width: 1.25em;
+  height: 1.25em;
+  color: transparent;
+  font-size: 0.8em;
+  line-height: 1.25;
+  text-align: center;
+  border: 1px solid var(--rv-radio-border-color);
+  transition-duration: var(--rv-radio-transition-duration);
+  transition-property: color, border-color, background-color;
+}
+.rv-radio__icon--round .rv-icon {
+  border-radius: 100%;
+}
+.rv-radio__icon--checked .rv-icon {
+  color: var(--rv-white);
+  background-color: var(--rv-radio-checked-icon-color);
+  border-color: var(--rv-radio-checked-icon-color);
+}
+.rv-radio__icon--disabled {
+  cursor: not-allowed;
+}
+.rv-radio__icon--disabled .rv-icon {
+  background-color: var(--rv-radio-disabled-background-color);
+  border-color: var(--rv-radio-disabled-icon-color);
+}
+.rv-radio__icon--disabled.rv-radio__icon--checked .rv-icon {
+  color: var(--rv-radio-disabled-icon-color);
+}
+.rv-radio__label {
+  margin-left: var(--rv-radio-label-margin);
+  color: var(--rv-radio-label-color);
+  line-height: var(--rv-radio-size);
+}
+.rv-radio__label--left {
+  margin: 0 var(--rv-radio-label-margin) 0 0;
+}
+.rv-radio__label--disabled {
+  color: var(--rv-radio-disabled-label-color);
+}
+.rv-radio-group .rv-radio {
+  margin-bottom: 8px;
+}
+.rv-radio-group .rv-radio:last-child {
+  margin-bottom: 0;
+  margin-right: 0;
+}
+.rv-radio-group .rv-radio--horizontal {
+  margin-bottom: 0;
+}
+.rv-radio-group--horizontal {
+  display: flex;
+  flex-wrap: wrap;
+}

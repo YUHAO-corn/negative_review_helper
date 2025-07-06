@@ -1,0 +1,134 @@
+:root {
+  --rv-number-keyboard-background-color: var(--rv-gray-2);
+  --rv-number-keyboard-key-height: 48px;
+  --rv-number-keyboard-key-font-size: 28px;
+  --rv-number-keyboard-key-active-color: var(--rv-gray-3);
+  --rv-number-keyboard-key-background-color: var(--rv-white);
+  --rv-number-keyboard-delete-font-size: var(--rv-font-size-lg);
+  --rv-number-keyboard-title-color: var(--rv-gray-7);
+  --rv-number-keyboard-title-height: 34px;
+  --rv-number-keyboard-title-font-size: var(--rv-font-size-lg);
+  --rv-number-keyboard-close-padding: 0 var(--rv-padding-md);
+  --rv-number-keyboard-close-color: var(--rv-text-link-color);
+  --rv-number-keyboard-close-font-size: var(--rv-font-size-md);
+  --rv-number-keyboard-button-text-color: var(--rv-white);
+  --rv-number-keyboard-button-background-color: var(--rv-primary-color);
+  --rv-number-keyboard-z-index: 100;
+}
+.rv-number-keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--rv-number-keyboard-z-index);
+  width: 100%;
+  padding-bottom: 22px;
+  background-color: var(--rv-number-keyboard-background-color);
+  user-select: none;
+}
+.rv-number-keyboard--with-title {
+  border-radius: 20px 20px 0 0;
+}
+.rv-number-keyboard__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+  height: var(--rv-number-keyboard-title-height);
+  padding-top: 6px;
+  color: var(--rv-number-keyboard-title-color);
+  font-size: var(--rv-number-keyboard-title-font-size);
+}
+.rv-number-keyboard__title {
+  display: inline-block;
+  font-weight: normal;
+}
+.rv-number-keyboard__title-left {
+  position: absolute;
+  left: 0;
+}
+.rv-number-keyboard__body {
+  display: flex;
+  padding: 6px 0 0 6px;
+}
+.rv-number-keyboard__keys {
+  display: flex;
+  flex: 3;
+  flex-wrap: wrap;
+}
+.rv-number-keyboard__close {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  padding: var(--rv-number-keyboard-close-padding);
+  color: var(--rv-number-keyboard-close-color);
+  font-size: var(--rv-number-keyboard-close-font-size);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.rv-number-keyboard__close:active {
+  opacity: var(--rv-active-opacity);
+}
+.rv-number-keyboard__sidebar {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.rv-number-keyboard--unfit {
+  padding-bottom: 0;
+}
+.rv-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--rv-number-keyboard-key-height);
+  font-size: var(--rv-number-keyboard-key-font-size);
+  line-height: 1.5;
+  background-color: var(--rv-number-keyboard-key-background-color);
+  border-radius: var(--rv-border-radius-lg);
+  cursor: pointer;
+}
+.rv-key--large {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  bottom: 6px;
+  left: 0;
+  height: auto;
+}
+.rv-key--blue,
+.rv-key--delete {
+  font-size: var(--rv-number-keyboard-delete-font-size);
+}
+.rv-key--active {
+  background-color: var(--rv-number-keyboard-key-active-color);
+}
+.rv-key--blue {
+  color: var(--rv-number-keyboard-button-text-color);
+  background-color: var(--rv-number-keyboard-button-background-color);
+}
+.rv-key--blue.rv-key--active {
+  opacity: var(--rv-active-opacity);
+}
+.rv-key__wrapper {
+  position: relative;
+  flex: 1;
+  flex-basis: 33%;
+  box-sizing: border-box;
+  padding: 0 6px 6px 0;
+}
+.rv-key__wrapper--wider {
+  flex-basis: 66%;
+}
+.rv-key__delete-icon {
+  width: 32px;
+  height: 22px;
+}
+.rv-key__collapse-icon {
+  width: 30px;
+  height: 24px;
+}
+.rv-key__loading-icon {
+  color: var(--rv-number-keyboard-button-text-color);
+}

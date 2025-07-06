@@ -1,0 +1,213 @@
+:root {
+  --rv-popover-arrow-size: 6px;
+  --rv-popover-border-radius: var(--rv-border-radius-lg);
+  --rv-popover-action-width: 128px;
+  --rv-popover-action-height: 44px;
+  --rv-popover-action-font-size: var(--rv-font-size-md);
+  --rv-popover-action-line-height: var(--rv-line-height-md);
+  --rv-popover-action-icon-size: 20px;
+  --rv-popover-light-text-color: var(--rv-text-color);
+  --rv-popover-light-background-color: var(--rv-white);
+  --rv-popover-light-action-disabled-text-color: var(--rv-gray-5);
+  --rv-popover-dark-text-color: var(--rv-white);
+  --rv-popover-dark-background-color: #4a4a4a;
+  --rv-popover-dark-action-disabled-text-color: var(--rv-gray-6);
+}
+.rv-popover.rv-popup {
+  position: absolute;
+  overflow: visible;
+  background-color: transparent;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.rv-popover__wrapper {
+  display: inline-block;
+}
+.rv-popover__arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: var(--rv-popover-arrow-size);
+}
+.rv-popover__content {
+  overflow: hidden;
+  border-radius: var(--rv-popover-border-radius);
+}
+.rv-popover__action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: var(--rv-popover-action-width);
+  height: var(--rv-popover-action-height);
+  padding: 0 var(--rv-padding-md);
+  font-size: var(--rv-popover-action-font-size);
+  line-height: var(--rv-line-height-md);
+  cursor: pointer;
+}
+.rv-popover__action:last-child .rv-popover__action-text::after {
+  display: none;
+}
+.rv-popover__action-text {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.rv-popover__action-icon {
+  margin-right: var(--rv-padding-xs);
+  font-size: var(--rv-popover-action-icon-size);
+}
+.rv-popover__action--with-icon .rv-popover__action-text {
+  justify-content: flex-start;
+}
+.rv-popover[data-popper-placement^='top'] .rv-popover__arrow {
+  bottom: 0;
+  border-top-color: currentColor;
+  border-bottom-width: 0;
+  transform: translate(-50%, 100%);
+}
+.rv-popover[data-popper-placement='top'] {
+  transform-origin: 50% 100%;
+}
+.rv-popover[data-popper-placement='top'] .rv-popover__arrow {
+  left: 50%;
+}
+.rv-popover[data-popper-placement='top-start'] {
+  transform-origin: 0 100%;
+}
+.rv-popover[data-popper-placement='top-start'] .rv-popover__arrow {
+  left: var(--rv-padding-md);
+}
+.rv-popover[data-popper-placement='top-end'] {
+  transform-origin: 100% 100%;
+}
+.rv-popover[data-popper-placement='top-end'] .rv-popover__arrow {
+  right: var(--rv-padding-md);
+}
+.rv-popover[data-popper-placement^='left'] .rv-popover__arrow {
+  right: 0;
+  border-right-width: 0;
+  border-left-color: currentColor;
+  transform: translate(100%, -50%);
+}
+.rv-popover[data-popper-placement='left'] {
+  transform-origin: 100% 50%;
+}
+.rv-popover[data-popper-placement='left'] .rv-popover__arrow {
+  top: 50%;
+}
+.rv-popover[data-popper-placement='left-start'] {
+  transform-origin: 100% 0;
+}
+.rv-popover[data-popper-placement='left-start'] .rv-popover__arrow {
+  top: var(--rv-padding-md);
+}
+.rv-popover[data-popper-placement='left-end'] {
+  transform-origin: 100% 100%;
+}
+.rv-popover[data-popper-placement='left-end'] .rv-popover__arrow {
+  bottom: var(--rv-padding-md);
+}
+.rv-popover[data-popper-placement^='right'] .rv-popover__arrow {
+  left: 0;
+  border-right-color: currentColor;
+  border-left-width: 0;
+  transform: translate(-100%, -50%);
+}
+.rv-popover[data-popper-placement='right'] {
+  transform-origin: 0 50%;
+}
+.rv-popover[data-popper-placement='right'] .rv-popover__arrow {
+  top: 50%;
+}
+.rv-popover[data-popper-placement='right-start'] {
+  transform-origin: 0 0;
+}
+.rv-popover[data-popper-placement='right-start'] .rv-popover__arrow {
+  top: var(--rv-padding-md);
+}
+.rv-popover[data-popper-placement='right-end'] {
+  transform-origin: 0 100%;
+}
+.rv-popover[data-popper-placement='right-end'] .rv-popover__arrow {
+  bottom: var(--rv-padding-md);
+}
+.rv-popover[data-popper-placement^='bottom'] .rv-popover__arrow {
+  top: 0;
+  border-top-width: 0;
+  border-bottom-color: currentColor;
+  transform: translate(-50%, -100%);
+}
+.rv-popover[data-popper-placement='bottom'] {
+  transform-origin: 50% 0;
+}
+.rv-popover[data-popper-placement='bottom'] .rv-popover__arrow {
+  left: 50%;
+}
+.rv-popover[data-popper-placement='bottom-start'] {
+  transform-origin: 0 0;
+}
+.rv-popover[data-popper-placement='bottom-start'] .rv-popover__arrow {
+  left: var(--rv-padding-md);
+}
+.rv-popover[data-popper-placement='bottom-end'] {
+  transform-origin: 100% 0;
+}
+.rv-popover[data-popper-placement='bottom-end'] .rv-popover__arrow {
+  right: var(--rv-padding-md);
+}
+.rv-popover--light {
+  color: var(--rv-popover-light-text-color);
+}
+.rv-popover--light .rv-popover__content {
+  background-color: var(--rv-popover-light-background-color);
+  box-shadow: 0 2px 12px rgba(50, 50, 51, 0.12);
+}
+.rv-popover--light .rv-popover__arrow {
+  color: var(--rv-popover-light-background-color);
+}
+.rv-popover--light .rv-popover__action:active {
+  background-color: var(--rv-active-color);
+}
+.rv-popover--light .rv-popover__action--disabled {
+  color: var(--rv-popover-light-action-disabled-text-color);
+  cursor: not-allowed;
+}
+.rv-popover--light .rv-popover__action--disabled:active {
+  background-color: transparent;
+}
+.rv-popover--dark {
+  color: var(--rv-popover-dark-text-color);
+}
+.rv-popover--dark .rv-popover__content {
+  background-color: var(--rv-popover-dark-background-color);
+}
+.rv-popover--dark .rv-popover__arrow {
+  color: var(--rv-popover-dark-background-color);
+}
+.rv-popover--dark .rv-popover__action:active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.rv-popover--dark .rv-popover__action--disabled {
+  color: var(--rv-popover-dark-action-disabled-text-color);
+}
+.rv-popover--dark .rv-popover__action--disabled:active {
+  background-color: transparent;
+}
+.rv-popover--dark .rv-popover__action-text::after {
+  border-color: var(--rv-gray-7);
+}
+.rv-popover-zoom-enter-from,
+.rv-popover-zoom-leave-active {
+  transform: scale(0.8);
+  opacity: 0;
+}
+.rv-popover-zoom-enter-active {
+  transition-timing-function: var(--rv-animation-timing-function-enter);
+}
+.rv-popover-zoom-leave-active {
+  transition-timing-function: var(--rv-animation-timing-function-leave);
+}

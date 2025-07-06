@@ -1,0 +1,43 @@
+:root {
+  --rv-rate-icon-size: 20px;
+  --rv-rate-icon-gutter: var(--rv-padding-base);
+  --rv-rate-icon-void-color: var(--rv-gray-5);
+  --rv-rate-icon-full-color: var(--rv-danger-color);
+  --rv-rate-icon-disabled-color: var(--rv-gray-5);
+}
+.rv-rate {
+  display: inline-flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+  user-select: none;
+}
+.rv-rate__item {
+  position: relative;
+}
+.rv-rate__item:not(:last-child) {
+  margin-right: var(--rv-rate-icon-gutter);
+}
+.rv-rate__icon {
+  display: block;
+  width: 1em;
+  color: var(--rv-rate-icon-void-color);
+  font-size: var(--rv-rate-icon-size);
+}
+.rv-rate__icon--half {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.rv-rate__icon--full {
+  color: var(--rv-rate-icon-full-color);
+}
+.rv-rate__icon--disabled {
+  color: var(--rv-rate-icon-disabled-color);
+}
+.rv-rate--disabled {
+  cursor: not-allowed;
+}
+.rv-rate--readOnly {
+  cursor: default;
+}

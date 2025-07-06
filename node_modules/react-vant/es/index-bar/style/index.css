@@ -1,0 +1,54 @@
+:root {
+  --rv-index-bar-sidebar-z-index: 2;
+  --rv-index-bar-index-font-size: var(--rv-font-size-xs);
+  --rv-index-bar-index-line-height: var(--rv-line-height-xs);
+  --rv-index-bar-index-active-color: var(--rv-primary-color);
+  --rv-index-anchor-z-index: 1;
+  --rv-index-anchor-padding: 0 var(--rv-padding-md);
+  --rv-index-anchor-text-color: var(--rv-text-color);
+  --rv-index-anchor-font-weight: var(--rv-font-weight-bold);
+  --rv-index-anchor-font-size: var(--rv-font-size-md);
+  --rv-index-anchor-line-height: 32px;
+  --rv-index-anchor-background-color: transparent;
+  --rv-index-anchor-sticky-text-color: var(--rv-primary-color);
+  --rv-index-anchor-sticky-background-color: var(--rv-white);
+}
+.rv-index-bar__sidebar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: var(--rv-index-bar-sidebar-z-index);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+}
+.rv-index-bar__index {
+  padding: 0 var(--rv-padding-xs) 0 var(--rv-padding-md);
+  font-weight: var(--rv-font-weight-bold);
+  font-size: var(--rv-index-bar-index-font-size);
+  line-height: var(--rv-index-bar-index-line-height);
+}
+.rv-index-bar__index--active {
+  color: var(--rv-index-bar-index-active-color);
+}
+.rv-index-anchor {
+  z-index: var(--rv-index-anchor-z-index);
+  box-sizing: border-box;
+  padding: var(--rv-index-anchor-padding);
+  color: var(--rv-index-anchor-text-color);
+  font-weight: var(--rv-index-anchor-font-weight);
+  font-size: var(--rv-index-anchor-font-size);
+  line-height: var(--rv-index-anchor-line-height);
+  background-color: var(--rv-index-anchor-background-color);
+}
+.rv-index-anchor--sticky {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: var(--rv-index-anchor-sticky-text-color);
+  background-color: var(--rv-index-anchor-sticky-background-color);
+}

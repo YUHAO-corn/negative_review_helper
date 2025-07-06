@@ -1,0 +1,85 @@
+:root {
+  --rv-slider-active-background-color: var(--rv-primary-color);
+  --rv-slider-inactive-background-color: var(--rv-gray-3);
+  --rv-slider-disabled-opacity: var(--rv-disabled-opacity);
+  --rv-slider-bar-height: 2px;
+  --rv-slider-button-width: 24px;
+  --rv-slider-button-height: 24px;
+  --rv-slider-button-border-radius: 50%;
+  --rv-slider-button-background-color: var(--rv-white);
+  --rv-slider-button-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.rv-slider {
+  position: relative;
+  width: 100%;
+  height: var(--rv-slider-bar-height);
+  background-color: var(--rv-slider-inactive-background-color);
+  border-radius: var(--rv-border-radius-max);
+  cursor: pointer;
+}
+.rv-slider::before {
+  position: absolute;
+  top: calc(var(--rv-padding-xs) * -1);
+  right: 0;
+  bottom: calc(var(--rv-padding-xs) * -1);
+  left: 0;
+  content: '';
+}
+.rv-slider__bar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--rv-slider-active-background-color);
+  border-radius: inherit;
+  transition: all var(--rv-animation-duration-fast);
+}
+.rv-slider__button {
+  width: var(--rv-slider-button-width);
+  height: var(--rv-slider-button-height);
+  background-color: var(--rv-slider-button-background-color);
+  border-radius: var(--rv-slider-button-border-radius);
+  box-shadow: var(--rv-slider-button-box-shadow);
+}
+.rv-slider__button-wrapper {
+  position: absolute;
+  top: 50%;
+  cursor: grab;
+}
+.rv-slider__button-wrapper--right {
+  right: 0;
+  transform: translate3d(50%, -50%, 0);
+}
+.rv-slider__button-wrapper--left {
+  left: 0;
+  transform: translate3d(-50%, -50%, 0);
+}
+.rv-slider--disabled {
+  cursor: not-allowed;
+  opacity: var(--rv-slider-disabled-opacity);
+}
+.rv-slider--disabled .rv-slider__button-wrapper {
+  cursor: not-allowed;
+}
+.rv-slider--vertical {
+  display: inline-block;
+  width: var(--rv-slider-bar-height);
+  height: 100%;
+}
+.rv-slider--vertical .rv-slider__button-wrapper--right {
+  top: auto;
+  right: 50%;
+  bottom: 0;
+  transform: translate3d(50%, 50%, 0);
+}
+.rv-slider--vertical .rv-slider__button-wrapper--left {
+  top: 0;
+  right: 50%;
+  left: auto;
+  transform: translate3d(50%, -50%, 0);
+}
+.rv-slider--vertical::before {
+  top: 0;
+  right: calc(var(--rv-padding-xs) * -1);
+  bottom: 0;
+  left: calc(var(--rv-padding-xs) * -1);
+}

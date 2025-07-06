@@ -1,0 +1,80 @@
+:root {
+  --rv-grid-item-content-padding: var(--rv-padding-md) var(--rv-padding-xs);
+  --rv-grid-item-content-background-color: var(--rv-white);
+  --rv-grid-item-content-active-color: var(--rv-active-color);
+  --rv-grid-item-icon-size: 28px;
+  --rv-grid-item-text-color: var(--rv-gray-7);
+  --rv-grid-item-text-font-size: var(--rv-font-size-sm);
+}
+.rv-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.rv-grid-item {
+  position: relative;
+  box-sizing: border-box;
+}
+.rv-grid-item--square {
+  height: 0;
+}
+.rv-grid-item__icon {
+  font-size: var(--rv-grid-item-icon-size);
+}
+.rv-grid-item__text {
+  color: var(--rv-grid-item-text-color);
+  font-size: var(--rv-grid-item-text-font-size);
+  line-height: 1.5;
+  word-break: break-all;
+}
+.rv-grid-item__icon + .rv-grid-item__text {
+  margin-top: var(--rv-padding-xs);
+}
+.rv-grid-item__content {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--rv-grid-item-content-padding);
+  background-color: var(--rv-grid-item-content-background-color);
+}
+.rv-grid-item__content::after {
+  z-index: 1;
+  border-width: 0 var(--rv-border-width-base) var(--rv-border-width-base) 0;
+}
+.rv-grid-item__content--square {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.rv-grid-item__content--center {
+  align-items: center;
+  justify-content: center;
+}
+.rv-grid-item__content--horizontal {
+  flex-direction: row;
+}
+.rv-grid-item__content--horizontal .rv-grid-item__text {
+  margin: 0 0 0 var(--rv-padding-xs);
+}
+.rv-grid-item__content--reverse {
+  flex-direction: column-reverse;
+}
+.rv-grid-item__content--reverse .rv-grid-item__text {
+  margin: 0 0 var(--rv-padding-xs);
+}
+.rv-grid-item__content--horizontal.rv-grid-item__content--reverse {
+  flex-direction: row-reverse;
+}
+.rv-grid-item__content--horizontal.rv-grid-item__content--reverse .rv-grid-item__text {
+  margin: 0 var(--rv-padding-xs) 0 0;
+}
+.rv-grid-item__content--surround::after {
+  border-width: var(--rv-border-width-base);
+}
+.rv-grid-item__content--clickable {
+  cursor: pointer;
+}
+.rv-grid-item__content--clickable:active {
+  background-color: var(--rv-grid-item-content-active-color);
+}

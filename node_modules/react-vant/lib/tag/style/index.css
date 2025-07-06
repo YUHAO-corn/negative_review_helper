@@ -1,0 +1,110 @@
+:root {
+  --rv-tag-padding: 0 var(--rv-padding-base);
+  --rv-tag-text-color: var(--rv-white);
+  --rv-tag-font-size: var(--rv-font-size-sm);
+  --rv-tag-border-radius: 2px;
+  --rv-tag-line-height: 16px;
+  --rv-tag-medium-padding: 2px 6px;
+  --rv-tag-large-padding: var(--rv-padding-base) var(--rv-padding-xs);
+  --rv-tag-large-border-radius: var(--rv-border-radius-md);
+  --rv-tag-large-font-size: var(--rv-font-size-md);
+  --rv-tag-round-border-radius: var(--rv-border-radius-max);
+  --rv-tag-danger-color: var(--rv-danger-color);
+  --rv-tag-primary-color: var(--rv-primary-color);
+  --rv-tag-success-color: var(--rv-success-color);
+  --rv-tag-warning-color: var(--rv-warning-color);
+  --rv-tag-default-color: var(--rv-gray-6);
+  --rv-tag-plain-background-color: var(--rv-white);
+}
+.rv-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--rv-tag-padding);
+  color: var(--rv-tag-text-color);
+  font-size: var(--rv-tag-font-size);
+  line-height: var(--rv-tag-line-height);
+  border-radius: var(--rv-tag-border-radius);
+}
+.rv-tag--default {
+  background-color: var(--rv-tag-default-color);
+}
+.rv-tag--default.rv-tag--plain {
+  color: var(--rv-tag-default-color);
+}
+.rv-tag--danger {
+  background-color: var(--rv-tag-danger-color);
+}
+.rv-tag--danger.rv-tag--plain {
+  color: var(--rv-tag-danger-color);
+}
+.rv-tag--primary {
+  background-color: var(--rv-tag-primary-color);
+}
+.rv-tag--primary.rv-tag--plain {
+  color: var(--rv-tag-primary-color);
+}
+.rv-tag--success {
+  background-color: var(--rv-tag-success-color);
+}
+.rv-tag--success.rv-tag--plain {
+  color: var(--rv-tag-success-color);
+}
+.rv-tag--warning {
+  background-color: var(--rv-tag-warning-color);
+}
+.rv-tag--warning.rv-tag--plain {
+  color: var(--rv-tag-warning-color);
+}
+.rv-tag--plain {
+  background-color: var(--rv-tag-plain-background-color);
+  border-color: currentColor;
+}
+.rv-tag--plain::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid;
+  border-color: inherit;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+}
+.rv-tag--medium {
+  padding: var(--rv-tag-medium-padding);
+}
+.rv-tag--large {
+  padding: var(--rv-tag-large-padding);
+  font-size: var(--rv-tag-large-font-size);
+  border-radius: var(--rv-tag-large-border-radius);
+}
+.rv-tag--mark {
+  border-radius: 0 var(--rv-tag-round-border-radius) var(--rv-tag-round-border-radius) 0;
+}
+.rv-tag--mark::after {
+  display: block;
+  width: 2px;
+  content: '';
+}
+.rv-tag--round {
+  border-radius: var(--rv-tag-round-border-radius);
+}
+.rv-tag__close {
+  margin-left: 2px;
+  cursor: pointer;
+}
+.rv-tag--hairline {
+  border-width: 0;
+}
+.rv-tag--hairline::after {
+  border-color: inherit;
+  border-radius: var(--rv-tag-round-border-radius);
+}
+.rv-tag--hairline.rv-tag--plain::before {
+  border-width: 0;
+}
+.rv-tag--hairline.rv-tag--round::after {
+  border-radius: var(--rv-tag-round-border-radius);
+}
