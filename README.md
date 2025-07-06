@@ -257,3 +257,4 @@ sequenceDiagram
 
 该项目采用 [MIT License](./LICENSE) 授权。
 
+---
