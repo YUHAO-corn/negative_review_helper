@@ -106,32 +106,32 @@ sequenceDiagram
     participant User as 用户
     participant MiniProgram as 微信小程序前端
     participant CloudFunction1 as generate-safe-replies
-    participant LLM as 大语言模型
-
-    User->>+MiniProgram: 1. 输入差评, 点击提交
-    MiniProgram->>+CloudFunction1: 2. 调用 generate-safe-replies
-    CloudFunction1->>+LLM: 3. 请求分析并生成9个【无成本】回复
-    LLM-->>-CloudFunction1: 4. 返回JSON数据
-    CloudFunction1-->>-MiniProgram: 5. 返回结构化数据
-    MiniProgram-->>-User: 6. 展示默认回复, 提供切换选项
-```
-
-### 第二次调用 (可选): `add-compensation` 时序图
-```mermaid
-sequenceDiagram
-    participant User as 用户
-    participant MiniProgram as 微信小程序前端
     participant CloudFunction2 as add-compensation
     participant LLM as 大语言模型
 
-    User->>+MiniProgram: 1. 对某个回复不满意, 点击"提供补偿"
-    User->>+MiniProgram: 2. 选择一种补偿方式 (如: 退款)
-    MiniProgram->>+CloudFunction2: 3. 调用 add-compensation (原始回复文本, 补偿方式)
-    CloudFunction2->>+LLM: 4. 请求将补偿信息【自然地】融入原回复
-    LLM-->>-CloudFunction2: 5. 返回追加补偿后的新回复
-    CloudFunction2-->>-MiniProgram: 6. 返回最终回复文本
-    MiniProgram-->>-User: 7. 展示最终回复, 用户可复制
+    User->>+MiniProgram: 1. 选择语言, 输入差评, 点击提交
+    MiniProgram->>+CloudFunction1: 2. 调用 generate-safe-replies (原始差评, 语言)
+    CloudFunction1->>+LLM: 3. 请求分析差评并生成9个【无成本承诺】的回复
+    LLM-->>-CloudFunction1: 4. 返回分析结果和9个回复
+    CloudFunction1-->>-MiniProgram: 5. 返回结构化JSON数据
+    MiniProgram-->>-User: 6. 展示分析结果和默认回复, 提供切换选项
+    Note over MiniProgram, User: 用户可在9个安全回复中自由切换, 此过程无后端交互
+
+    alt 用户选择提供补偿 (可选)
+        User->>+MiniProgram: 7. 对某个回复不满意, 点击"提供补偿"
+        User->>+MiniProgram: 8. 选择一种补偿方式 (如: 退款)
+        MiniProgram->>+CloudFunction2: 9. 调用 add-compensation (原始回复文本, 补偿方式)
+        CloudFunction2->>+LLM: 10. 请求将补偿信息【自然地】融入原回复
+        LLM-->>-CloudFunction2: 11. 返回追加补偿后的新回复
+        CloudFunction2-->>-MiniProgram: 12. 返回最终回复文本
+        MiniProgram-->>-User: 13. 展示最终回复, 用户可复制
+    else 直接满意
+        User->>MiniProgram: 7. 点击复制, 流程结束
+    end
+
+    Note over MiniProgram, User: 最终回复可复制并使用
 ```
+*注：为简洁起见，此图仅展示第一阶段核心流程。*
 
 ---
 
