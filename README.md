@@ -73,65 +73,13 @@ AI 应用的运营绕不开对 **成本(Cost)、延迟(Latency)和质量(Quality
 
 ---
 
-## ⚙️ 产品设计与流程 (Design & Flow)
+## ⚙️ 核心设计：小程序版"两阶段模型"
 
-为了更直观地展示两个版本在产品逻辑上的差异，以下是它们各自的用户流程图与数据时序图。
+以最具代表性的小程序版为例，其独特的"两阶段模型"设计思路可以通过以下流程图与时序图清晰展现。
 
-<details>
-<summary><strong>点击查看：网页版 (Web) - 分步引导式流程</strong></summary>
-
-### 用户流程图 (Web)
+### 用户流程图
 ```mermaid
-graph TD
-    A[用户访问网页] --> B{输入差评内容};
-    B --> C[点击 "开始分析"];
-    C --> D[系统分析差评并提供3个回复角度];
-    D --> E{用户选择一个角度};
-    E --> F[系统根据角度生成正式回复];
-    F --> G{用户选择润色风格};
-    G --> H[系统根据风格润色回复];
-    H --> I{用户确认最终回复};
-    I -- "满意" --> J[流程结束];
-    I -- "补充" --> K[返回修改(可扩展)];
-```
-
-### 数据时序图 (Web)
-```mermaid
-sequenceDiagram
-    participant User as 用户
-    participant Frontend as 前端 (React Native Web)
-    participant Backend as 后端服务 (Node.js)
-    participant LLM as 大语言模型
-
-    User->>+Frontend: 1. 输入差评内容, 点击提交
-    Frontend->>+Backend: 2. POST /api/analyze (原始差评)
-    Backend->>+LLM: 3. 请求分析差评, 提炼回复角度
-    LLM-->>-Backend: 4. 返回分析结果和3个角度
-    Backend-->>-Frontend: 5. 返回3个回复角度
-    Frontend-->>-User: 6. 展示3个角度供选择
-
-    User->>+Frontend: 7. 选择一个回复角度
-    Frontend->>+Backend: 8. POST /api/generate (原始差评 + 所选角度)
-    Backend->>+LLM: 9. 请求根据角度生成正式回复
-    LLM-->>-Backend: 10. 返回正式回复文案
-    Backend-->>-Frontend: 11. 返回正式回复和风格选项
-    Frontend-->>-User: 12. 展示正式回复和润色风格
-
-    User->>+Frontend: 13. 选择一个润色风格
-    Frontend->>+Backend: 14. POST /api/refine (正式回复 + 所选风格)
-    Backend->>+LLM: 15. 请求根据风格润色文案
-    LLM-->>-Backend: 16. 返回润色后的最终回复
-    Backend-->>-Frontend: 17. 返回最终回复
-    Frontend-->>-User: 18. 展示最终回复
-```
-</details>
-
-<details>
-<summary><strong>点击查看：小程序版 (Mini Program) - 两阶段模型</strong></summary>
-
-### 用户流程图 (Mini Program)
-```mermaid
-graph TD
+graph LR
     subgraph "第一阶段: 快速生成安全回复"
         A[用户打开小程序] --> B{选择语言并输入差评};
         B --> C[点击分析];
@@ -142,7 +90,7 @@ graph TD
 
     subgraph "第二阶段: (可选)追加补偿措施"
         F --> G{用户不满意/需补偿?};
-        G -- "是" --> H[点击"提供补偿"按钮];
+        G -- "是" --> H[点击&quot;提供补偿&quot;按钮];
         H --> I{选择具体补偿方式};
         I --> J[后台将补偿信息融入原回复];
         J --> K[前端展示追加补偿后的最终回复];
@@ -152,7 +100,7 @@ graph TD
     K --> L;
 ```
 
-### 数据时序图 (Mini Program)
+### 数据时序图
 ```mermaid
 sequenceDiagram
     participant User as 用户
@@ -168,7 +116,6 @@ sequenceDiagram
     MiniProgram-->>-User: 6. 展示默认回复, 提供切换选项
 ```
 *注：为简洁起见，此图仅展示第一阶段核心流程。*
-</details>
 
 ---
 
