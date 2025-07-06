@@ -115,7 +115,23 @@ sequenceDiagram
     CloudFunction1-->>-MiniProgram: 5. 返回结构化数据
     MiniProgram-->>-User: 6. 展示默认回复, 提供切换选项
 ```
-*注：为简洁起见，此图仅展示第一阶段核心流程。*
+
+### 第二次调用 (可选): `add-compensation` 时序图
+```mermaid
+sequenceDiagram
+    participant User as 用户
+    participant MiniProgram as 微信小程序前端
+    participant CloudFunction2 as add-compensation
+    participant LLM as 大语言模型
+
+    User->>+MiniProgram: 1. 对某个回复不满意, 点击"提供补偿"
+    User->>+MiniProgram: 2. 选择一种补偿方式 (如: 退款)
+    MiniProgram->>+CloudFunction2: 3. 调用 add-compensation (原始回复文本, 补偿方式)
+    CloudFunction2->>+LLM: 4. 请求将补偿信息【自然地】融入原回复
+    LLM-->>-CloudFunction2: 5. 返回追加补偿后的新回复
+    CloudFunction2-->>-MiniProgram: 6. 返回最终回复文本
+    MiniProgram-->>-User: 7. 展示最终回复, 用户可复制
+```
 
 ---
 
