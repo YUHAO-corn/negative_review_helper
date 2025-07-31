@@ -4,6 +4,12 @@
 
 > 一款 AI 赋能的差评处理工具，旨在帮助商家将负面评价转化为提升顾客满意度的机会。
 
+## 🎬 产品演示 (Demo Video)
+
+<video src="https://wx-corn.oss-cn-beijing.aliyuncs.com/negative_review_helper.mp4" controls width="100%" autoplay muted>
+  您的浏览器不支持 video 标签。请<a href="https://wx-corn.oss-cn-beijing.aliyuncs.com/negative_review_helper.mp4">点击此处直接观看演示视频</a>
+</video>
+
 ---
 
 | 网页版 (Web) - 实时演示 | 小程序版 (Mini Program) |
