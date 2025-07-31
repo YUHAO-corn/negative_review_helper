@@ -3,7 +3,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > 一款 AI 赋能的差评处理工具，旨在帮助商家将负面评价转化为提升顾客满意度的机会。
-
 ## 🎬 产品演示 (Demo Video)
 
 <video src="https://wx-corn.oss-cn-beijing.aliyuncs.com/negative_review_helper.mp4" controls width="100%" autoplay muted>
